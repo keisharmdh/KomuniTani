@@ -13,6 +13,18 @@
         android:theme="@style/Theme.KomuniTani"
         tools:targetApi="31">
         <activity
+            android:name=".logout"
+            android:exported="false" />
+        <activity
+            android:name=".bantuan"
+            android:exported="false" />
+        <activity
+            android:name=".profil"
+            android:exported="false" />
+        <activity
+            android:name=".profile_dashboard"
+            android:exported="false" />
+        <activity
             android:name=".dashboard"
             android:exported="false" />
         <activity
