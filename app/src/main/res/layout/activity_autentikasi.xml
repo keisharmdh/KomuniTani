@@ -23,32 +23,35 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:text="Login"
-            android:background="@drawable/rounded_button"
-            android:textColor="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_daftar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Daftar"
-            android:background="@drawable/rounded_button"
-            android:textColor="@color/white"/>
+            android:textSize="18sp"
+            android:fontFamily="@font/plus_jakarta_extrabold"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Login"
+            android:textSize="18sp"
+            android:fontFamily="@font/plus_jakarta_extrabold"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_tamu"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Mode Tamu"
-            android:background="@drawable/rounded_button_white"
-            android:textColor="@color/hijau1"/>
+            android:textSize="18sp"
+            android:fontFamily="@font/plus_jakarta_extrabold"
+            android:textColor="@color/hijau1"
+            android:background="@drawable/rounded_button_white"/>
     </LinearLayout>
 
 </RelativeLayout>

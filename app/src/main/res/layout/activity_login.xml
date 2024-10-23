@@ -93,18 +93,20 @@
         android:text="Lupa Password?"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_2"
         app:layout_constraintEnd_toEndOf="parent" />
-    <Button
-        android:id="@+id/btn_log"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_lgn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="50sp"
         android:text="Login"
-        app:layout_constraintTop_toBottomOf="@id/lupa_pw"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/hijau1"/>
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/lupa_pw"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_log"
+        app:layout_constraintTop_toBottomOf="@id/btn_lgn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Belum punya akun? Daftar"/>
