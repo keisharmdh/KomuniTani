@@ -110,7 +110,7 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="Ubah Profil"
             android:textSize="18sp"
             android:fontFamily="@font/plus_jakarta_extrabold"
             android:textColor="@color/white"
