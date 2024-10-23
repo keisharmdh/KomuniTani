@@ -13,6 +13,9 @@
         android:theme="@style/Theme.KomuniTani"
         tools:targetApi="31">
         <activity
+            android:name=".test_aja"
+            android:exported="false" />
+        <activity
             android:name=".splashscreen"
             android:exported="true">
             <intent-filter>
