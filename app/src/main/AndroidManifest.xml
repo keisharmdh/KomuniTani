@@ -13,6 +13,7 @@
         android:theme="@style/Theme.KomuniTani"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".logout"
             android:exported="false" />
         <activity
@@ -27,6 +28,21 @@
         <activity
             android:name=".dashboard"
             android:exported="false" />
+        <activity
+            android:name=".item_post"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.dashboard.Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/Theme.KomuniTani.NoActionBar" />
+>>>>>>> origin/laila
         <activity
             android:name=".reset_password"
             android:exported="false" />
