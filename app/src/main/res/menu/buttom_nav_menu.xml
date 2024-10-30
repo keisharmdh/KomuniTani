@@ -6,7 +6,7 @@
         />
     <item
         android:id="@+id/message"
-        android:icon="@drawable/comment"
+        android:icon="@drawable/messages"
         />
     <item
         android:id="@+id/search"
