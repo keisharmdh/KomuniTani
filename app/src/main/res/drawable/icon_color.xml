@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <?xml version="1.0" encoding="utf-8"?>
-    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <!-- Background Shape -->
-        <item>
-            <shape android:shape="rectangle">
-                <corners android:radius="10dp" /> <!-- Radius sudut -->
-                <solid android:color="@color/white" /> <!-- Warna latar belakang -->
-                <stroke
-                    android:width="3dp"
-                    android:color="#91972A" /> <!-- Garis tepi -->
-            </shape>
-        </item>
+    <!-- Background Shape -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" /> <!-- Radius sudut -->
+            <solid android:color="@color/white" /> <!-- Warna latar belakang -->
+            <stroke
+                android:width="3dp"
+                android:color="#91972A" /> <!-- Garis tepi -->
+        </shape>
+    </item>
 
-        <!-- Color Overlay -->
-        <item android:bottom="4dp" android:right="4dp" android:left="4dp" android:top="4dp"> <!-- Offset untuk memberikan efek timbul -->
-            <shape android:shape="rectangle">
-                <corners android:radius="10dp" /> <!-- Radius sudut -->
-                <solid android:color="#FF0000" /> <!-- Ganti dengan warna yang diinginkan -->
-            </shape>
-        </item>
+    <!-- Color Overlay -->
+    <item android:bottom="4dp" android:right="4dp" android:left="4dp" android:top="4dp"> <!-- Offset untuk memberikan efek timbul -->
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" /> <!-- Radius sudut -->
+            <solid android:color="#FF0000" /> <!-- Ganti dengan warna yang diinginkan -->
+        </shape>
+    </item>
 
-    </layer-list>
+</layer-list>

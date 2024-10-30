@@ -26,8 +26,9 @@ public class login extends AppCompatActivity {
 
         });
 
-        Button btnLogin = findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        Button btn_Login = findViewById(R.id.btn_login);
+
+        btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(login.this, dashboard.class);

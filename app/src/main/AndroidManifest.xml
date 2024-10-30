@@ -22,14 +22,14 @@
             android:name=".resetpassword"
             android:exported="false" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".login"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.KomuniTani" />
+            android:exported="true"
+            android:label="@string/title_activity_login" />
+<!--        <activity-->
+<!--            android:name=".login"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_login"-->
+<!--            android:theme="@style/Theme.KomuniTani" />-->
         <activity
             android:name=".test_aja"
             android:exported="false" />
@@ -42,6 +42,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".autentikasi"
+            android:exported="true" />
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
