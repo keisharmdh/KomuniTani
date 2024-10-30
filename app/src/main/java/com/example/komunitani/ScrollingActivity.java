@@ -1,2 +1,6 @@
-package com.example.komunitani;public class ScrollingActivity {
+package com.example.komunitani;
+
+import android.app.Activity;
+
+public class ScrollingActivity extends Activity {
 }
