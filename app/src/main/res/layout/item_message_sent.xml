@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_gravity="end"
+    android:background="@drawable/bubble_right"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="16dp"
+    android:backgroundTint="#DAF8E3"
+    android:backgroundTintMode="src_in"
+    android:shape="rectangle">
+
+    <TextView
+        android:id="@+id/textMessageSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your message"
+        android:textColor="#333333" />
+</LinearLayout>

@@ -7,9 +7,7 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 public class autentikasi extends AppCompatActivity {
 
@@ -33,6 +31,15 @@ public class autentikasi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(autentikasi.this, login.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnTamu = findViewById(R.id.btn_tamu);
+        btnTamu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(autentikasi.this, MainActivity.class);
                 startActivity(intent);
             }
         });

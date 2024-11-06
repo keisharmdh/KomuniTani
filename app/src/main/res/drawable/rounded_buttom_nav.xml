@@ -9,6 +9,6 @@
         android:left="4dp"
         android:right="4dp"/>
     <size
-        android:width="match_parent"
+        android:width="0dp"
         android:height="48dp" />
 </shape>

@@ -1,3 +1,6 @@
+
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.example.komunitani"
-    compileSdk = 34
-
+    compileSdk = 35
+    
     defaultConfig {
         applicationId = "com.example.komunitani"
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -73,6 +76,9 @@ dependencies {
     implementation(libs.annotation)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

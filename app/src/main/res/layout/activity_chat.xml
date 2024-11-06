@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFBE6">
+
+    <!-- Header dengan nama pengguna -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBarContainer"
+        android:layout_width="412dp"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-1dp">>
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="23dp"
+            android:clickable="true"
+            android:contentDescription="Back Button"
+            android:focusable="true"
+            android:src="@drawable/leftbutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.555" />
+
+        <TextView
+            android:id="@+id/top_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="112dp"
+            android:gravity="center"
+            android:text="Ujang Jagung"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/profile"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="43dp"
+            android:layout_height="20dp"
+            android:clickable="true"
+            android:contentDescription="Edit Button"
+            android:focusable="true"
+            android:src="@drawable/profile"
+            android:text="Edit"
+            android:textColor="#B6C454"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <!-- RecyclerView untuk percakapan -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:layout_marginHorizontal="10dp"/>
+
+    <!-- Input pesan dan tombol kirim -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@drawable/search_bar_background">
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/add"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/messageInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message..."
+            android:background="@drawable/search_bar_background"
+            android:padding="12dp"
+            android:backgroundTint="#F8F9FE" />
+
+        <ImageView
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/add"
+            android:padding="8dp" />
+    </LinearLayout>
+</LinearLayout>

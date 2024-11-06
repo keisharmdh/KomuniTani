@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:layout_marginTop="200dp"
-        android:src="@drawable/logo_apps" />
+        android:src="@drawable/logokomunitani_chara" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/circle_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Warna latar belakang lingkaran -->
+    <solid android:color="#FF5733"/> <!-- Ganti dengan warna yang diinginkan -->
+
+    <!-- Ukuran lingkaran -->
+    <size
+        android:width="100dp"
+        android:height="100dp"/>
+</shape>

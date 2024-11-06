@@ -2,145 +2,158 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="30dp">
+    android:layout_gravity="center">
 
-    <ImageView
-        android:id="@+id/logo_apps"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo_apps"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/title_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daftar Sekarang"
-        android:fontFamily="@font/plus_jakarta_semibold"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/logo_apps"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingVertical="5dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Masukkan informasi Anda untuk bergabung        dengan KomuniTani"
-        app:layout_constraintTop_toBottomOf="@+id/title_login"
-        android:gravity="center"/>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/edit_text_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintTop_toBottomOf="@+id/title_login">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Username"/>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_profile"
-                android:layout_gravity="center_vertical"
-                android:paddingVertical="5dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/edit_text_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Email"/>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_email"
-                android:layout_gravity="center_vertical"
-                android:padding="7dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/edit_text_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_2">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Password"/>
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_hide_pw"
-                android:layout_gravity="center_vertical"
-                android:padding="7dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_daftar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daftar"
-        android:textSize="18sp"
-        android:fontFamily="@font/plus_jakarta_extrabold"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_button"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_3"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/btn_daftar"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:padding="30dp">
+
+        <ImageView
+            android:id="@+id/logo_apps"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logokomunitani_chara"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
+            android:id="@+id/title_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sudah punya akun?"
-            android:paddingHorizontal="0dp"/>
+            android:text="Daftar Sekarang"
+            android:fontFamily="@font/plus_jakarta_semibold"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/logo_apps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingVertical="5dp"/>
+
         <TextView
-            android:id="@+id/text_click_login"
-            android:layout_width="wrap_content"
+            android:layout_width="271dp"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:paddingHorizontal="10dp"
-            android:textColor="@color/hijau1"/>
+            android:gravity="center"
+            android:text="Masukkan informasi Anda untuk bergabung dengan KomuniTani"
+            app:layout_constraintTop_toBottomOf="@+id/title_login" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edit_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintTop_toBottomOf="@+id/title_login">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Username"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_profile"
+                    android:layout_gravity="center_vertical"
+                    android:paddingVertical="5dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edit_text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Email"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_email"
+                    android:layout_gravity="center_vertical"
+                    android:padding="7dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edit_text_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Password"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_hide_pw"
+                    android:layout_gravity="center_vertical"
+                    android:padding="7dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_daftar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daftar"
+            android:textSize="18sp"
+            android:fontFamily="@font/plus_jakarta_extrabold"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_3"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/btn_daftar"
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudah punya akun?"
+                android:paddingHorizontal="0dp"/>
+            <TextView
+                android:id="@+id/text_click_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/hijau1"/>
+        </LinearLayout>
     </LinearLayout>
+
+
 
 
 

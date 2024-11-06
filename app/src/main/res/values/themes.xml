@@ -1,11 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+     Base application theme.
     <style name="Base.Theme.KomuniTani" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:fontFamily">@font/plus_jakarta_reg</item>
-        <item name="android:textAllCaps">false</item>
+<!--        <item name="android:textAllCaps">false</item>-->
+<!--        <item name="colorButtonNormal">@null</item> &lt;!&ndash; Disable button tint &ndash;&gt;-->
+<!--        <item name="colorPrimary">@android:color/transparent</item>-->
+<!--        <item name="colorSecondary">@android:color/transparent</item>-->
     </style>
+
+<!--    <style name="CustomButtonStyle" parent="Widget.Material3.Button">-->
+<!--        <item name="android:background">@drawable/search_button</item>-->
+<!--        &lt;!&ndash; Atur backgroundTint dengan warna yang diinginkan &ndash;&gt;-->
+<!--        <item name="android:backgroundTint">#1F2024</item> &lt;!&ndash; atau warna lain sesuai keinginan &ndash;&gt;-->
+<!--    </style>-->
+
+
+
+
 
     <style name="Theme.KomuniTani" parent="Base.Theme.KomuniTani" />
 
@@ -13,6 +26,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+
 
     <style name="Theme.KomuniTani.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account">
+
+    <!-- Background Header -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:background="@drawable/header_account"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Profile Picture -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/foto_profile"
+        android:background="@android:color/white"
+        android:contentDescription="Profile Picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Username -->
+
+    <!-- Follow Button -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Ujang"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profile_image"
+        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+    <Button
+        android:id="@+id/follow_button"
+        android:layout_width="94dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#D9D9D9"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Mengikuti"
+        android:textColor="@android:color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_image" />
+
+    <!-- Bio -->
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tanaman adalah hidupku"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        app:layout_constraintStart_toStartOf="@id/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Stats (Posts, Followers, Following) -->
+    <LinearLayout
+        android:id="@+id/stats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/bio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/followers_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Pengikut\n200K"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/following_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Mengikuti\n180"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <!-- Navigation and Interaction Icons (Posts, Likes, Comments) -->
+    <LinearLayout
+        android:id="@+id/navigation_interaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/stats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Posts -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/posts_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="POST"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <!-- Stroke under Posts -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/darker_gray"/>
+        </LinearLayout>
+
+        <!-- Likes -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/likes_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="BALASAN"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <!-- Stroke under Likes -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/darker_gray"/>
+        </LinearLayout>
+
+        <!-- Comments -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/comments_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="SUKA"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <!-- Stroke under Comments -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/darker_gray"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Posts Section (RecyclerView) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/posts_recycler_view"
+        android:layout_width="338dp"
+        android:layout_height="244dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_interaction"
+        tools:listitem="@layout/item_post" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
