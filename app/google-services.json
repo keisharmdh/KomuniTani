@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "316943783631",
+    "project_id": "komunitani-id",
+    "storage_bucket": "komunitani-id.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316943783631:android:d666744d4761486c5789ba",
+        "android_client_info": {
+          "package_name": "com.lyocode.KomuniTani"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKf1fRMTV0ViPHIIWYPNLeTK90RgBvHnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
