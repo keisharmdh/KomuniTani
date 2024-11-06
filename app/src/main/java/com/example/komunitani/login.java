@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -31,7 +32,7 @@ public class login extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(login.this, dashboard.class);
+                Intent intent = new Intent(login.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -45,6 +46,8 @@ public class login extends AppCompatActivity {
             }
         });
 
+
+
         TextView clickableText_daftar = findViewById(R.id.text_click_daftar);
         clickableText_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,5 +56,6 @@ public class login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

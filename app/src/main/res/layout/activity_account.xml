@@ -47,12 +47,14 @@
         app:layout_constraintStart_toStartOf="@id/profile_image"
         app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
+    <!-- Bio -->
+
     <Button
         android:id="@+id/follow_button"
         android:layout_width="94dp"
         android:layout_height="45dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#D9D9D9"
         android:ellipsize="end"
         android:maxLines="1"
@@ -64,7 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/profile_image" />
 
-    <!-- Bio -->
     <TextView
         android:id="@+id/bio"
         android:layout_width="0dp"
@@ -207,7 +208,7 @@
 
     <!-- Posts Section (RecyclerView) -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/posts_recycler_view"
+        android:id="@+id/recyclerView"
         android:layout_width="338dp"
         android:layout_height="244dp"
         android:padding="8dp"

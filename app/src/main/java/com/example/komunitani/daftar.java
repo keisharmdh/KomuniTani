@@ -28,7 +28,7 @@ public class daftar extends AppCompatActivity {
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(daftar.this, dashboard.class);
+                Intent intent = new Intent(daftar.this, MainActivity.class);
                 startActivity(intent);
             }
         });
