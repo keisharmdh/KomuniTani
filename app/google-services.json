@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:316943783631:android:d666744d4761486c5789ba",
+        "mobilesdk_app_id": "1:316943783631:android:79cb967649dd245f5789ba",
         "android_client_info": {
-          "package_name": "com.lyocode.KomuniTani"
+          "package_name": "com.example.komunitani"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "316943783631-5rr10rt3v9fs1dllc64ec5f6fpvkbj1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDKf1fRMTV0ViPHIIWYPNLeTK90RgBvHnQ"
@@ -20,7 +25,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316943783631-5rr10rt3v9fs1dllc64ec5f6fpvkbj1t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316943783631:android:d666744d4761486c5789ba",
+        "android_client_info": {
+          "package_name": "com.lyocode.KomuniTani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316943783631-5rr10rt3v9fs1dllc64ec5f6fpvkbj1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKf1fRMTV0ViPHIIWYPNLeTK90RgBvHnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316943783631-5rr10rt3v9fs1dllc64ec5f6fpvkbj1t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -61,13 +62,7 @@ dependencies {
     implementation("com.google.android.material:material:1.8.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    // Firebase Dependencies
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-database:20.2.0")
-    implementation("com.google.firebase:firebase-firestore:24.7.1")
-    implementation("com.google.firebase:firebase-auth:21.0.3")
+    implementation("com.google.firebase:firebase-database-ktx:21.0.0")
 
     // Library dependencies
     implementation(libs.appcompat)
@@ -87,6 +82,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.preference)
+    implementation(libs.firebase.database)
 
     // Testing dependencies
     testImplementation(libs.junit)

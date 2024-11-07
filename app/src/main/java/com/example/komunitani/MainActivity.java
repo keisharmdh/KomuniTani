@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         // Inisialisasi Bottom Navigation View
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
 //        // Set listener untuk item yang dipilih di bottom navigation
 //        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {

@@ -21,7 +21,7 @@ public class account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         // Inisialisasi RecyclerView
-        recyclerView = findViewById(R.id.posts_recycler_view);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Inisialisasi data dan adapter
