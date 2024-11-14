@@ -15,13 +15,19 @@
         android:theme="@style/Theme.KomuniTani"
         tools:targetApi="31">
         <activity
+            android:name=".see_all"
+            android:exported="false" />
+        <activity
+            android:name=".coba"
+            android:exported="false" />
+        <activity
             android:name=".chat"
             android:exported="false" />
         <activity
             android:name=".item_message"
             android:exported="false" />
         <activity
-            android:name=".message"
+            android:name=".Message"
             android:exported="false" />
         <activity
             android:name=".ui.login.notification"
@@ -66,9 +72,6 @@
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.KomuniTani" />
         <activity
-            android:name=".test_aja"
-            android:exported="false" />
-        <activity
             android:name=".splashscreen"
             android:exported="true">
             <intent-filter>
@@ -77,8 +80,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".autentikasi"></activity>
+        <activity android:name=".autentikasi" />
 
+        <service
+            android:name="com.example.firebase.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

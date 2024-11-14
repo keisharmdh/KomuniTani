@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F8E6">
+
+    <!--    Top Bar-->
+
+    <ImageView
+        android:id="@+id/topbar"
+        android:layout_width="411dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logokomunitani_chara" />
+
+
+
+    <!-- Search Bar -->
+    <RelativeLayout
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/topbar"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_bar_background">
+
+        <!-- Icon Search -->
+        <ImageView
+            android:id="@+id/iconSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/search"
+            android:contentDescription="Search Icon"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"/>
+
+        <!-- Input Text -->
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/iconSearch"
+            android:layout_toRightOf="@id/iconSearch"
+            android:layout_marginEnd="8dp"
+            android:hint="Apa yang Anda ingin tanyakan dan berikan?"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColorHint="@color/black"
+            android:textSize="12sp"
+            android:gravity="center_vertical"/>
+
+        <!-- Icon Filter -->
+        <ImageView
+            android:id="@+id/iconFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/filter"
+            android:contentDescription="Filter Icon"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"/>
+    </RelativeLayout>
+
+
+
+
+    <!-- Recent Searches -->
+
+    <TextView
+        android:id="@+id/recentSearches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchBar"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:text="Pencarian Terbaru"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/recentSearchButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recentSearches"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <!-- Recent Search Buttons -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="192dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/search_button"
+            android:backgroundTint="@null"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Bagaimana cara mengatasi hama"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="192dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/search_button"
+            android:backgroundTint="@null"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Bagaimana cara mengatasi hama"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:textAllCaps="false"/>
+
+
+
+    </LinearLayout>
+
+    <!-- Topics Section -->
+    <TextView
+        android:id="@+id/topicsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recentSearchButtons"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Topik - topik untuk Anda"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <!-- Topic Suggestions Grid -->
+
+    <!-- Footer Navigation (optional) -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topicsHeader"
+        android:layout_margin="16dp"
+        android:columnCount="3">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+
+        <!-- Tambahkan tombol lain dengan pengaturan yang sama sesuai kebutuhan -->
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/populerHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recentSearchButtons"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Topik - topik untuk Anda"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <!-- Topic Suggestions Grid -->
+
+    <!-- Footer Navigation (optional) -->
+    <GridLayout
+        android:id="@+id/topicsGrid"
+        android:layout_width="377dp"
+        android:layout_height="286dp"
+        android:layout_below="@id/topicsHeader"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:columnCount="3">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="14sp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/search_button"
+            android:text="Hama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+
+        <!-- Tambahkan tombol lain dengan pengaturan yang sama sesuai kebutuhan -->
+    </GridLayout>
+
+
+
+
+
+    <!-- Footer Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/buttom_nav_menu"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@color/hijau1"
+            app:itemTextColor="@color/black"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="79dp"
+        android:text="Lihat lebih sedikit" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/search_button"
+        android:text="Hama"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:textSize="14sp" />
+</RelativeLayout>

@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.model.Message; // Pastikan ini sesuai dengan nama package Anda
 
-public class message extends AppCompatActivity {
+public class Message extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +32,9 @@ public class message extends AppCompatActivity {
         RecyclerView chatRecyclerView = findViewById(R.id.chat_recycler_view);
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<Message> messageList = new ArrayList<>();
-        messageList.add(new Message("Asep Garut", "Stand up for what you believe in", 9));
-        messageList.add(new Message("Bu Alma", "One day you're seventeen and planning...", 2));
+        List<com.example.model.Message> messageList = new ArrayList<>();
+        messageList.add(new com.example.model.Message("Asep Garut", "Stand up for what you believe in", 9));
+        messageList.add(new com.example.model.Message("Bu Alma", "One day you're seventeen and planning...", 2));
         // Tambahkan data lain sesuai kebutuhan
 
         MessageAdapter adapter = new MessageAdapter(messageList);

@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="25dp">
 
         <!-- Avatar image of the user -->
         <ImageView
@@ -20,7 +20,6 @@
             android:layout_height="40dp"
             android:contentDescription="User avatar"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,25 +28,24 @@
             android:id="@+id/user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Intan Permatasari"
-            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:text="Nama Pengguna"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@id/avatar_image"
-            app:layout_constraintStart_toEndOf="@id/avatar_image"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/user_location"
-            android:layout_marginStart="8dp" />
+            app:layout_constraintStart_toEndOf="@id/avatar_image"
+            app:layout_constraintTop_toTopOf="@id/avatar_image" />
 
         <!-- User location -->
         <TextView
             android:id="@+id/user_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lokasi"
+            android:layout_marginStart="8dp"
+            android:text="Bogor"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/user_name"
             app:layout_constraintStart_toEndOf="@id/avatar_image"
-            android:layout_marginStart="8dp" />
+            app:layout_constraintTop_toBottomOf="@id/user_name" />
 
         <!-- Post content -->
         <TextView
@@ -55,68 +53,75 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="15dp"
-            android:text="Cara Menanam Padi dengan Jajar Legowo"
-            android:textStyle="bold"
+            android:text="Konten Postingan"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/avatar_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/post_image" />
+            app:layout_constraintTop_toBottomOf="@id/post_type"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Post image -->
         <ImageView
             android:id="@+id/post_image"
             android:layout_width="0dp"
             android:layout_height="150dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/header_account"
-            app:layout_constraintTop_toBottomOf="@id/post_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/post_actions"
-            android:layout_marginBottom="16dp" />
+            app:layout_constraintTop_toBottomOf="@id/post_content"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Post actions (likes, comments) -->
+        <!-- Actions (Likes, Comments, Shares) -->
         <LinearLayout
             android:id="@+id/post_actions"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
-            app:layout_constraintTop_toBottomOf="@id/post_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/post_image">
 
             <TextView
                 android:id="@+id/like_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25"
                 android:drawableLeft="@drawable/thumb"
                 android:drawablePadding="4dp"
-                android:layout_marginEnd="16dp" />
+                android:text="25" />
 
             <TextView
                 android:id="@+id/comment_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4"
+                android:layout_marginStart="16dp"
                 android:drawableLeft="@drawable/comment"
                 android:drawablePadding="4dp"
-                android:layout_marginEnd="16dp" />
+                android:text="4" />
 
             <TextView
                 android:id="@+id/share_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3"
+                android:layout_marginStart="16dp"
                 android:drawableLeft="@drawable/share"
-                android:drawablePadding="4dp" />
+                android:drawablePadding="4dp"
+                android:text="3" />
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Post Type Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/post_type"
+            android:layout_width="96dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="244dp"
+            android:background="@drawable/search_bar_main"
+            android:text="Informasi"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_location" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

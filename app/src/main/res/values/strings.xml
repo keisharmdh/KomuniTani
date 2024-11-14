@@ -127,4 +127,31 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_notification">notification</string>
+    <string name="upload_media" />
+
+
+    <!-- String-Array Definitions -->
+    <string-array name="popular_post_titles">
+        <item>Cara Mengatasi Hama</item>
+        <item>Tips Merawat Tanaman</item>
+    </string-array>
+    <string-array name="popular_post_authors">
+        <item>Intan Permatasari</item>
+        <item>Agus Santoso</item>
+    </string-array>
+
+    <string name="spinner_prompt">Pilih Topik</string>
+
+
+    <string-array name="topics">
+        <item>Pilih Topik</item>
+        <item>Pertanian</item>
+        <item>Teknologi</item>
+        <item>Ekonomi</item>
+        <item>Kesehatan</item>
+    </string-array>
+
+
+
+
 </resources>

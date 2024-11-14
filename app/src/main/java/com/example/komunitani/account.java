@@ -35,12 +35,12 @@ public class account extends AppCompatActivity {
 
     private void loadPosts() {
         // Tambahkan contoh data ke dalam postList
-        // Menambahkan contoh data ke dalam postList
-        postList.add(new Post("Cara Menanam Padi", "Intan Permatasari", "Isi konten disini", 0, 0, 0, R.drawable.header_account));
-        postList.add(new Post("Cara Berkebun", "Agus Santoso", "Isi konten disini", 0, 0, 0, R.drawable.header_account));
-
+        postList.add(new Post("Cara Menanam Padi", "Intan Permatasari", "Isi konten disini", 0, 0, 0, R.drawable.header_account, "informasi"));
+        postList.add(new Post("Cara Berkebun", "Agus Santoso", "Isi konten disini", 0, 0, 0, R.drawable.header_account, "pertanyaan"));
 
         // Notifikasi adapter untuk update tampilan
         postAdapter.notifyDataSetChanged();
     }
+
+
 }

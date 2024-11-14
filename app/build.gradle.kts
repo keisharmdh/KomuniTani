@@ -62,7 +62,10 @@ dependencies {
     implementation("com.google.android.material:material:1.8.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.google.firebase:firebase-database-ktx:21.0.0")
+    implementation("com.google.firebase:firebase-bom:33.5.1")
+    implementation ("com.google.firebase:firebase-messaging:23.0.0")
+
+
 
     // Library dependencies
     implementation(libs.appcompat)
@@ -83,6 +86,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.preference)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.messaging)
 
     // Testing dependencies
     testImplementation(libs.junit)

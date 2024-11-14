@@ -7,42 +7,260 @@
     tools:context=".MainActivity">
 
     <!-- Top Bar -->
-    <RelativeLayout
-        android:id="@+id/topBar"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_margin="16dp"
-        android:background="#F6FEDB"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+    <ImageView
+        android:id="@+id/topbar"
+        android:layout_width="411dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logokomunitani_chara" />
 
-        <ImageView
-            android:layout_width="129dp"
-            android:layout_height="15dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/letter" />
-    </RelativeLayout>
-
-    <!-- Search Bar -->
-    <EditText
-        android:id="@+id/search_bar"
+    <!-- POST BAR -->
+    <LinearLayout
+        android:id="@+id/post_bar"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/search_bar_main"
-        android:drawableStart="@drawable/search"
-        android:gravity="center_vertical|start"
-        android:hint="Apa yang Anda ingin tanyakan dan berikan?"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="12sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:background="@drawable/search_bar_background"
+        android:padding="10dp"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@id/topbar"
+        app:layout_constraintWidth_percent="0.9"
+        android:onClick="expandPostOptions">
+
+        <!-- Avatar -->
+        <ImageView
+            android:id="@+id/avatar_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/foto_profile"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp" />
+
+        <!-- Hint Text -->
+        <TextView
+            android:id="@+id/post_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Apa yang ingin Anda bagikan?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- Expanded Options (Initially Hidden) -->
+    <LinearLayout
+        android:id="@+id/post_actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@drawable/insert_background"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/post_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <!-- Post Type (Pertanyaan/Informasi) -->
+        <!-- Post Type (Pertanyaan/Informasi) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical">
+
+            <!-- Avatar (Diletakkan di pojok kiri) -->
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/foto_profile"
+                android:background="@drawable/circle_background"
+                android:layout_marginStart="8dp" />
+
+            <!-- RadioGroup untuk memilih jenis post -->
+            <RadioGroup
+                android:id="@+id/post_type_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <RadioButton
+                    android:id="@+id/rb_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan"
+                    android:textSize="12sp"
+                    android:buttonTint="@color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi"
+                    android:textSize="12sp"
+                    android:buttonTint="@color/white" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Judul -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+
+            <TextView
+                android:id="@+id/title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Judul:"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/post_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Tulis Judul"
+                android:textSize="12sp"
+                android:background="@drawable/insert_background"
+                android:padding="6dp" />
+        </LinearLayout>
+
+        <!-- Deskripsi -->
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi:"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/post_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tulis pertanyaan atau informasi di sini"
+            android:textSize="12sp"
+            android:background="@drawable/insert_background"
+            android:padding="8dp"
+            android:minHeight="80dp"
+            android:gravity="top"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Aksi: Topik, Tag, Lokasi, Media, Format Text, Tombol Post -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="10"
+            android:layout_marginTop="8dp">
+
+
+            <!-- Pilih Topik -->
+            <Spinner
+                android:id="@+id/spinner_topic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:background="@drawable/spinner_with_icon"
+                android:padding="6dp"
+                android:entries="@array/topics"
+                android:spinnerMode="dropdown"
+                android:layout_marginEnd="4dp"
+                android:prompt="@string/spinner_prompt"/>
+
+
+            <!-- Icon Lokasi -->
+            <ImageButton
+                android:id="@+id/icon_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:src="@drawable/location"
+                android:contentDescription="Add Location"
+                android:padding="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Icon Media -->
+            <ImageButton
+                android:id="@+id/icon_media"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:src="@drawable/insert_photo"
+                android:contentDescription="Upload Media"
+                android:padding="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Underline -->
+            <ImageButton
+                android:id="@+id/icon_underline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:src="@drawable/format_underlined"
+                android:contentDescription="Underline Text"
+                android:padding="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Italic -->
+            <ImageButton
+                android:id="@+id/icon_italic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:src="@drawable/format_italic"
+                android:contentDescription="Italic Text"
+                android:padding="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Bold -->
+            <ImageButton
+                android:id="@+id/icon_bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:src="@drawable/format_bold"
+                android:contentDescription="Bold Text"
+                android:padding="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Tombol Post -->
+            <Button
+                android:id="@+id/btn_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/hijau1"
+                android:padding="8dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="4dp"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+
 
     <!-- RecyclerView for Posts -->
     <androidx.recyclerview.widget.RecyclerView
@@ -50,10 +268,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/search_bar"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_actions" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -65,5 +284,6 @@
         app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/hijau1"
         app:itemTextColor="@color/black"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:layout_marginTop="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
