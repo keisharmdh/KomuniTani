@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/drawable/search_bar_background.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FFFFFF" /> <!-- Warna putih -->
-    <corners android:radius="25dp" /> <!-- Rounded corners -->
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer bayangan -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#55000000" /> <!-- Warna bayangan dengan opasitas -->
+            <corners android:radius="25dp" /> <!-- Rounded corners agar sesuai dengan layer utama -->
+        </shape>
+    </item>
+
+    <!-- Layer utama -->
+    <item android:top="2dp" android:left="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Warna putih -->
+            <corners android:radius="25dp" /> <!-- Rounded corners -->
+        </shape>
+    </item>
+</layer-list>

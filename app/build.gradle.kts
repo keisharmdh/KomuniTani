@@ -57,6 +57,15 @@ android {
 }
 
 dependencies {
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("at.favre.lib:bcrypt:0.9.0")
+
+
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("com.google.android.material:material:1.8.0")
@@ -64,6 +73,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.firebase:firebase-bom:33.5.1")
     implementation ("com.google.firebase:firebase-messaging:23.0.0")
+    implementation ("com.google.android.libraries.places:places:2.6.0")
+
 
 
 
@@ -94,6 +105,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
+
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
     // Debug dependencies
     debugImplementation(libs.ui.tooling)

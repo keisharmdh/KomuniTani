@@ -47,6 +47,20 @@
             app:layout_constraintStart_toEndOf="@id/avatar_image"
             app:layout_constraintTop_toBottomOf="@id/user_name" />
 
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/post_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="10 Nov 2024, 10:00"
+            android:textSize="12sp"
+            android:textColor="@color/abumuda"
+            app:layout_constraintStart_toStartOf="@id/user_location"
+            app:layout_constraintTop_toBottomOf="@id/user_location" />
+
+
+
         <!-- Post content -->
         <TextView
             android:id="@+id/post_content"
@@ -56,7 +70,7 @@
             android:text="Konten Postingan"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/post_timestamp"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Post image -->
@@ -107,21 +121,5 @@
                 android:drawablePadding="4dp"
                 android:text="3" />
         </LinearLayout>
-
-        <!-- Post Type Button -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/post_type"
-            android:layout_width="96dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="244dp"
-            android:background="@drawable/search_bar_main"
-            android:text="Informasi"
-            android:textSize="8sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_location" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

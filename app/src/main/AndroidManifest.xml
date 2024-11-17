@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,34 @@
         android:theme="@style/Theme.KomuniTani"
         tools:targetApi="31">
         <activity
-            android:name=".see_all"
+            android:name=".Help"
             android:exported="false" />
         <activity
-            android:name=".coba"
+            android:name=".SecurityPrivacy"
+            android:exported="false" />
+        <activity
+            android:name=".AccountInformation"
+            android:exported="false" />
+        <activity
+            android:name=".item_setting"
+            android:exported="false" />
+        <activity
+            android:name=".settings"
+            android:exported="false" />
+        <activity
+            android:name=".account_other"
+            android:exported="false" />
+        <activity
+            android:name=".edit_profile"
+            android:exported="false" />
+        <activity
+            android:name=".logout_confirm"
+            android:exported="false" />
+        <activity
+            android:name=".CreatePost"
+            android:exported="false" />
+        <activity
+            android:name=".see_all"
             android:exported="false" />
         <activity
             android:name=".chat"
@@ -26,13 +51,6 @@
         <activity
             android:name=".item_message"
             android:exported="false" />
-        <activity
-            android:name=".Message"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.notification"
-            android:exported="false"
-            android:label="@string/title_activity_notification" />
         <activity
             android:name=".item_post_account"
             android:exported="false" />
@@ -44,15 +62,10 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.example.dashboard.Dashboard"
             android:exported="false" />
-        <activity
-            android:name=".ScrollingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.KomuniTani.NoActionBar" />
         <activity
             android:name=".reset_password"
             android:exported="false" />
@@ -81,6 +94,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".autentikasi" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".profil" />
+        <activity android:name=".Message" />
+        <activity android:name=".profile_dashboard" />
 
         <service
             android:name="com.example.firebase.MyFirebaseMessagingService"

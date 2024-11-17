@@ -40,8 +40,10 @@ public class autentikasi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(autentikasi.this, MainActivity.class);
+                intent.putExtra("isGuest", true);
                 startActivity(intent);
             }
         });
+
     }
 }

@@ -1,24 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
-        />
+        android:title="Home" />
     <item
         android:id="@+id/message"
         android:icon="@drawable/messages"
-        />
+        android:title="Chat" />
     <item
         android:id="@+id/search"
         android:icon="@drawable/search"
-
-        />
+        android:title="Search" />
     <item
         android:id="@+id/chatbot"
         android:icon="@drawable/chatbot"
-        />
+        android:title="chatbot" />
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/profile"
-        />
+        android:id="@+id/profil"
+        android:icon="@drawable/icon_profile_hijau"
+        android:title="Profile" />
 </menu>

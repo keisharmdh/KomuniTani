@@ -10,4 +10,19 @@
         <item>reply_all</item>
     </string-array>
     <string-array name="post_types" />
+
+    <string-array name="post_type_options">
+        <item>Informasi</item>
+        <item>Pertanyaan</item>
+    </string-array>
+    <string-array name="date_options">
+        <item>Terbaru</item>
+        <item>Tanggal Tertentu</item>
+    </string-array>
+    <string-array name="location_options">
+        <item>Semua Lokasi</item>
+        <item>Lokasi A</item>
+        <item>Lokasi B</item>
+    </string-array>
+
 </resources>
