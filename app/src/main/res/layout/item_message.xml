@@ -25,8 +25,7 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/profile_picture"
-        app:layout_constraintEnd_toStartOf="@id/unread_count">
+        app:layout_constraintStart_toEndOf="@id/profile_picture">
 
         <!-- Name -->
         <TextView
@@ -51,17 +50,17 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Unread Message Count -->
-    <TextView
-        android:id="@+id/unread_count"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@drawable/circle_background"
-        android:gravity="center"
-        android:text="9"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!--    &lt;!&ndash; Unread Message Count &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/unread_count"-->
+<!--        android:layout_width="24dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:background="@drawable/circle_background"-->
+<!--        android:gravity="center"-->
+<!--        android:text="9"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

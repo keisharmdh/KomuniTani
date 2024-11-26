@@ -154,18 +154,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/post_actions" />
 
-    <!-- Floating Action Button untuk Notifikasi -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_notification"
-        android:contentDescription="Notification"
-        android:layout_marginBottom="140dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:backgroundTint="@color/hijau1"/>
+<!--    &lt;!&ndash; Floating Action Button untuk Notifikasi &ndash;&gt;-->
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab_notification"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/icon_notification"-->
+<!--        android:contentDescription="Notification"-->
+<!--        android:layout_marginBottom="140dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:backgroundTint="@color/hijau1"/>-->
 
 
     <!-- Floating Action Button untuk Postingan Baru -->

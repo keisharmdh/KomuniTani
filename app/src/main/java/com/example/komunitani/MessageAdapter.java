@@ -53,8 +53,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             context.startActivity(intent);
         });
 
-        // Set unread count if applicable
-        holder.unreadCount.setText("0"); // Ganti dengan logika yang sesuai
+//        // Set unread count if applicable
+//        holder.unreadCount.setText("0"); // Ganti dengan logika yang sesuai
     }
 
     @Override
@@ -70,7 +70,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             super(itemView);
             contactName = itemView.findViewById(R.id.contact_name);
             lastMessage = itemView.findViewById(R.id.last_message);
-            unreadCount = itemView.findViewById(R.id.unread_count);
             profilePicture = itemView.findViewById(R.id.profile_picture);
         }
     }

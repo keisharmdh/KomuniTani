@@ -68,7 +68,8 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
 
         <Spinner
             android:id="@+id/spinner_topic"

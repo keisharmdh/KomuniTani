@@ -10,6 +10,8 @@ import com.example.model.LoginRequest;
 import com.example.model.LoginResponse;
 import com.example.model.MessageResponse;
 import com.example.model.MsgModel;
+import com.example.model.NewChatMessage;
+import com.example.model.NewMessageResponse;
 import com.example.model.PasswordChangeResponse;
 import com.example.model.Post;
 import com.example.model.PostRequest;
@@ -169,6 +171,14 @@ public interface ApiService {
 //            @Header("Authorization") String token,
 //            @Body ChatMessage message
 //    );
+
+    @POST("v/messages/{receiverId}")
+    Call<NewMessageResponse> sendNewMessage(
+            @Path("receiverId") int receiverId,
+            @Header("Authorization") String token,
+            @Body NewChatMessage message
+    );
+
 
 
 

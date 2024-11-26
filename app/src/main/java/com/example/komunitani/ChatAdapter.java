@@ -43,17 +43,25 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {
         ChatMessage message = messages.get(position);
 
-        // Logika untuk menentukan jenis pesan
-        if (message.getSenderId() == userId && message.getReceiverId() == receiverId) {
-            return VIEW_TYPE_SENT; // Pesan dikirim oleh user saat ini ke receiver
-        } else if (message.getSenderId() == receiverId && message.getReceiverId() == userId) {
-            return VIEW_TYPE_RECEIVED; // Pesan diterima oleh user saat ini dari receiver
+        Log.d(TAG, "Determining view type for position " + position +
+                ": senderId=" + message.getSenderId() +
+                ", receiverId=" + message.getReceiverId() +
+                ", currentUserId=" + userId +
+                ", targetReceiverId=" + receiverId);
+
+        Log.d("ChatMessage", "Message: " + message.getMessage() +
+                ", Sender ID: " + message.getSenderId() +
+                ", Receiver ID: " + message.getReceiverId());
+
+
+        if (message.getSenderId() == userId) {
+            return VIEW_TYPE_SENT;
+        } else if (message.getReceiverId() == userId) {
+            return VIEW_TYPE_RECEIVED;
         } else {
-            // Jika tidak memenuhi kondisi, log pesan untuk debugging
-            Log.w("ChatAdapter", "Unknown message sender/receiver relation: " +
-                    "senderId=" + message.getSenderId() +
+            Log.w(TAG, "Unknown relation: senderId=" + message.getSenderId() +
                     ", receiverId=" + message.getReceiverId());
-            return VIEW_TYPE_RECEIVED; // Default fallback
+            return VIEW_TYPE_RECEIVED; // Fallback untuk mencegah crash
         }
     }
 

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.api.ApiService;
 import com.example.model.ChatMessage;
 import com.example.model.ChatResponse;
+import com.example.model.MessageDetail;
 import com.example.model.MessageResponse;
+import com.example.model.NewChatMessage;
+import com.example.model.NewMessageResponse;
 import com.example.model.User;
 
 import java.util.ArrayList;
@@ -34,6 +39,9 @@ public class chat extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<ChatMessage> messages;
     private ApiService apiService;
+    private EditText messageInput;
+    private ImageView sendButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,8 @@ public class chat extends AppCompatActivity {
         if (receiverId != -1) {
             android.util.Log.d("ChatActivity", "Receiver ID: " + receiverId);
         }
+
+        Log.d("ChatActivity", "Receiver ID: " + receiverId);
 
 
 //        Log.d(TAG, "ChatAdapter initialized with senderId: " + userId + ", receiverId: " + receiverId);
@@ -100,6 +110,21 @@ public class chat extends AppCompatActivity {
             Toast.makeText(this, "User ID or Token not found", Toast.LENGTH_SHORT).show();
             Log.e("ChatActivity", "User ID or Token not found.");
         }
+
+        // Inisialisasi komponen UI
+        messageInput = findViewById(R.id.messageInput);
+        sendButton = findViewById(R.id.sendButton);
+
+        sendButton.setOnClickListener(v -> {
+            String messageText = messageInput.getText().toString().trim();
+
+            if (!messageText.isEmpty()) {
+                sendMessage(receiverId, token, messageText);
+                messageInput.setText(""); // Hapus teks setelah dikirim
+            } else {
+                Toast.makeText(chat.this, "Message cannot be empty", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void fetchMessages(int receiverId, String token) {
@@ -140,6 +165,48 @@ public class chat extends AppCompatActivity {
             }
         });
     }
+
+    private void sendMessage(int receiverId, String token, String messageText) {
+        Log.d("ChatActivity", "Sending message: " + messageText + " to receiverId: " + receiverId);
+
+        // Siapkan data untuk dikirim
+        NewChatMessage newChatMessage = new NewChatMessage(messageText);
+
+        // Panggil endpoint POST dengan Retrofit
+        apiService.sendNewMessage(receiverId, "Bearer " + token, newChatMessage).enqueue(new Callback<NewMessageResponse>() {
+            @Override
+            public void onResponse(Call<NewMessageResponse> call, Response<NewMessageResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    NewMessageResponse newMessageResponse = response.body();
+                    MessageDetail sentMessage = newMessageResponse.getMessage();
+
+                    Log.d("ChatActivity", "Message sent successfully: " + sentMessage.getMessage());
+
+                    // Tambahkan pesan ke daftar
+                    messages.add(new ChatMessage(
+                            sentMessage.getId(),         // Ganti sesuai atribut ID di ChatMessage
+                            sentMessage.getMessage(),    // Isi pesan
+                            sentMessage.getSender_id(),   // ID pengirim
+                            sentMessage.getCreated_at(),  // Timestamp atau atribut lain yang relevan
+                            sentMessage.getUpdated_at()
+                    ));
+
+                    chatAdapter.notifyDataSetChanged();
+                    recyclerViewChat.scrollToPosition(messages.size() - 1); // Scroll ke pesan terakhir
+                } else {
+                    Log.e("ChatActivity", "Failed to send message: " + response.code());
+                    Toast.makeText(chat.this, "Failed to send message", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NewMessageResponse> call, Throwable t) {
+                Log.e("ChatActivity", "Error sending message: " + t.getMessage());
+                Toast.makeText(chat.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 

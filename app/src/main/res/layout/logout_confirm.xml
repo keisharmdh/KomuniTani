@@ -47,6 +47,7 @@
             android:fontFamily="@font/plus_jakarta_semibold"
             android:text="Logout"
             android:textColor="@color/white"
-            android:background="@drawable/rounded_button"/>
+            android:background="@drawable/rounded_button"
+            android:layout_marginStart="8dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@
             android:id="@+id/top_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
+            android:layout_marginStart="120dp"
             android:gravity="center"
             android:text="Ujang Jagung"
             android:textColor="#000000"
@@ -79,14 +79,6 @@
         android:padding="8dp"
         android:background="@drawable/search_bar_background">
 
-        <ImageView
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/add"
-            android:padding="8dp" />
-
         <EditText
             android:id="@+id/messageInput"
             android:layout_width="0dp"
@@ -102,7 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/add"
-            android:padding="8dp" />
+            android:src="@drawable/leftbutton"
+            android:padding="8dp"
+            android:rotation="180"/>
     </LinearLayout>
 </LinearLayout>

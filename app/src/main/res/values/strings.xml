@@ -145,16 +145,18 @@
 
     <string-array name="topics">
         <item>Pilih Topik</item>
-        <item>Pertanian</item>
-        <item>Teknologi</item>
-        <item>Ekonomi</item>
-        <item>Kesehatan</item>
+        <item>Pertanian Umum</item>
+        <item>Teknik Pertanian</item>
+        <item>Tanaman Pangan</item>
+        <item>Holtikultura</item>
+        <item>Perkebunan</item>
     </string-array>
 
     <string-array name="post_tye">
         <item>Pilih Tipe</item>
-        <item>Pertanyaan</item>
+        <item>Tanya Jawab</item>
         <item>Informasi</item>
+        <item>Diskusi</item>
 
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
