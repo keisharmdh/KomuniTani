@@ -15,19 +15,17 @@
         android:background="@drawable/header_account"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/menu_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="8dp"
-        android:src="@drawable/ic_titik_tiga"
         android:background="@android:color/transparent"
-        android:contentDescription="menu settings"
+        android:src="@drawable/ic_titik_tiga"
         app:layout_constraintTop_toTopOf="@id/header_background"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Profile Picture -->
     <ImageView
@@ -42,42 +40,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
-        android:layout_marginBottom="8dp"/>
-
-    <!-- Username -->
-
-    <!-- Follow Button -->
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:text="Ujang"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/profile_image"
-        app:layout_constraintTop_toBottomOf="@id/profile_image" />
-
-    <!-- Bio -->
-
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/follow_button"
         android:layout_width="94dp"
         android:layout_height="45dp"
-        android:layout_marginStart="368dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#D9D9D9"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:text="Mengikuti"
+        android:text="Follow"
         android:textColor="@android:color/black"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@id/header_background"/>
 
     <ImageView
         android:id="@+id/dm"
@@ -90,6 +70,19 @@
         android:src="@drawable/icon_message"
         app:layout_constraintEnd_toStartOf="@id/follow_button"
         app:layout_constraintTop_toTopOf="@id/profile_image" />
+
+    <!-- Username and Bio -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Ujang"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profile_image"
+        app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
     <TextView
         android:id="@+id/bio"
@@ -104,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp" />
 
-    <!-- Stats (Posts, Followers, Following) -->
+    <!-- Stats Section -->
     <LinearLayout
         android:id="@+id/stats"
         android:layout_width="0dp"
@@ -138,109 +131,28 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <!-- Navigation and Interaction Icons (Posts, Likes, Comments) -->
-    <LinearLayout
-        android:id="@+id/navigation_interaction"
-        android:layout_width="wrap_content"
+    <!-- TabLayout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/stats"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
+        app:tabIndicatorColor="@android:color/black"
+        app:tabSelectedTextColor="@android:color/black"
+        app:tabTextColor="@android:color/darker_gray" />
 
-        <!-- Posts -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginEnd="16dp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/posts_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="POST"
-                android:textSize="14sp"
-                android:textColor="@android:color/black" />
-
-            <!-- Stroke under Posts -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/darker_gray"/>
-        </LinearLayout>
-
-        <!-- Likes -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginEnd="16dp"
-            android:gravity="center">
-
-
-            <TextView
-                android:id="@+id/likes_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="BALASAN"
-                android:textSize="14sp"
-                android:textColor="@android:color/black" />
-
-            <!-- Stroke under Likes -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/darker_gray"/>
-        </LinearLayout>
-
-        <!-- Comments -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-
-            <TextView
-                android:id="@+id/comments_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="SUKA"
-                android:textSize="14sp"
-                android:textColor="@android:color/black" />
-
-            <!-- Stroke under Comments -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/darker_gray"/>
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <!-- Posts Section (RecyclerView) -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="338dp"
-        android:layout_height="244dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_interaction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_post" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,18 @@
 package com.example.komunitani;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.api.ApiService;
 import com.example.model.Post;
+import com.example.model.SearchResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,42 +30,47 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private RecyclerView rvTopics, rvRecentSearch;
+    private RecyclerView rvTopics, rvRecentSearch, rvSearchResults;
     private ImageView ivFilter;
     private EditText etSearch;
+    private ApiService apiService;
+    private SearchResultsAdapter searchResultsAdapter; // Changed to SearchResultsAdapter
+    private List<Post> posts;
+    private Spinner spinnerTopic, spinnerPostType, spinnerTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        // Inisialisasi RecyclerView
-        rvTopics = findViewById(R.id.rv_topics);
-        rvRecentSearch = findViewById(R.id.rv_recent_search);
-        etSearch = findViewById(R.id.et_search);
+        initViews();
+        setupRecyclerViews();
+        initBottomNavigation();
+        initRetrofit();
 
-        // Memanggil metode untuk mengatur data RecyclerView
-        setupTopics();
-        setupRecentSearches();
+        // Initialize Spinners
+        spinnerTopic = findViewById(R.id.spinner_topic);
+        spinnerPostType = findViewById(R.id.spinner_post_type);
+        spinnerTime = findViewById(R.id.spinner_time);
 
-        // Inisialisasi ikon filter
-        ivFilter = findViewById(R.id.iv_filter);
-        ivFilter.setOnClickListener(v -> showFilterDialog());
+        // Populate Spinner Data
+        setupSpinners();
 
-        // Tangkap event "Enter" di EditText
-        etSearch.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+        etSearch.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                 String query = etSearch.getText().toString().trim();
                 if (!query.isEmpty()) {
-                    saveSearch(query); // Simpan pencarian ke recent search
-                    etSearch.setText(""); // Kosongkan input
-                    setupRecentSearches(); // Refresh RecyclerView
-                    Toast.makeText(this, "Pencarian: " + query, Toast.LENGTH_SHORT).show();
+                    performSearch(query);
                 } else {
                     Toast.makeText(this, "Input tidak boleh kosong", Toast.LENGTH_SHORT).show();
                 }
@@ -73,9 +79,35 @@ public class SearchActivity extends AppCompatActivity {
             return false;
         });
 
-        // Mengatur BottomNavigationView
+        etSearch.setOnClickListener(v -> {
+            // Aktifkan kembali search bar jika sebelumnya dinonaktifkan
+            etSearch.setEnabled(true);
+
+            // Aktifkan kembali keyboard
+            etSearch.setInputType(InputType.TYPE_CLASS_TEXT);
+            etSearch.requestFocus();
+        });
+
+
+//        ivFilter.setOnClickListener(v -> showFilterDialog());
+    }
+
+    private void initViews() {
+        rvTopics = findViewById(R.id.rv_topics);
+        rvRecentSearch = findViewById(R.id.rv_recent_search);
+        rvSearchResults = findViewById(R.id.rv_search_results);
+        etSearch = findViewById(R.id.et_search);
+        ivFilter = findViewById(R.id.iv_filter);
+    }
+
+    private void setupRecyclerViews() {
+        setupTopics();
+        setupRecentSearches();
+    }
+
+    private void initBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.search); // Set item aktif ke "Search"
+        bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             Intent intent = null;
@@ -83,148 +115,200 @@ public class SearchActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.home) {
                 intent = new Intent(this, MainActivity.class);
             } else if (item.getItemId() == R.id.message) {
-                intent = new Intent(this, Message.class);
+                intent = new Intent(this, MessageActivity.class);
             } else if (item.getItemId() == R.id.search) {
-                // Tetap di halaman ini, tidak ada perubahan aktivitas
                 return true;
             } else if (item.getItemId() == R.id.profile) {
-                intent = new Intent(this, profil.class);
+                intent = new Intent(this, account.class);
             }
 
             if (intent != null) {
                 startActivity(intent);
-                finish(); // Tutup aktivitas saat ini
+                finish();
             }
 
             return true;
         });
     }
 
-    // Metode untuk mengatur RecyclerView topik
+    @Override
+    public void onBackPressed() {
+        if (rvSearchResults.getVisibility() == View.VISIBLE) {
+            // Jika hasil pencarian muncul, sembunyikan dan tampilkan kembali tampilan awal
+            rvSearchResults.setVisibility(View.GONE);
+            rvRecentSearch.setVisibility(View.VISIBLE);
+            rvTopics.setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_recent_search_label).setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_topic_label).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_see_all_topics).setVisibility(View.VISIBLE);
+
+            // Pastikan RecyclerView untuk recent search di-update
+            setupRecentSearches();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void setupSpinners() {
+        // Data for Spinners
+        String[] topics = {"Pertanian", "Teknologi", "Ekonomi"};
+        String[] postTypes = {"Pertanyaan", "Informasi"};
+        String[] times = {"Week", "Month", "Year"};
+
+        // Topic Spinner
+        ArrayAdapter<String> topicAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, topics);
+        topicAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTopic.setAdapter(topicAdapter);
+
+        // Post Type Spinner
+        ArrayAdapter<String> postTypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, postTypes);
+        postTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPostType.setAdapter(postTypeAdapter);
+
+        // Time Spinner
+        ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, times);
+        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTime.setAdapter(timeAdapter);
+    }
+
+
+
+
+    private void initRetrofit() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://komunitani-v2.vercel.app/api/api/") // Your base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        apiService = retrofit.create(ApiService.class);
+    }
+
+    private void performSearch(String query) {
+        Log.d("SearchActivity", "Searching for: " + query);
+
+        hideRecentAndTopicViews();
+
+        // Sembunyikan keyboard sementara
+        etSearch.setInputType(0); // Disable input type (keyboard won't show up)
+
+        // Simpan query pencarian ke SharedPreferences
+        saveRecentSearch(query);
+
+        apiService.searchPosts(query).enqueue(new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, retrofit2.Response<SearchResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    SearchResponse searchResponse = response.body();
+                    List<Post> posts = searchResponse.getData().getPosts();
+                    if (posts != null && !posts.isEmpty()) {
+                        showSearchResults(posts);
+                    } else {
+                        hideSearchResultsView();
+                        showToast("Tidak ada hasil ditemukan");
+                    }
+                } else {
+                    hideSearchResultsView();
+                    showToast("Tidak ada hasil ditemukan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                hideSearchResultsView();
+                showToast("Kesalahan: " + t.getMessage());
+            }
+        });
+
+
+    }
+
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+
+    private void saveRecentSearch(String query) {
+        // Ambil riwayat pencarian sebelumnya
+        List<String> recentSearches = getRecentSearches();
+
+        // Menambahkan pencarian baru ke list
+        recentSearches.add(0, query);
+
+        // Batasi jumlah riwayat pencarian, misalnya hanya 6 yang disimpan
+        if (recentSearches.size() > 6) {
+            recentSearches.remove(recentSearches.size() - 1);
+        }
+
+        // Simpan kembali riwayat pencarian ke SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("recent_search", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String json = new Gson().toJson(recentSearches);
+        editor.putString("search_history", json);
+        editor.apply();
+    }
+
+
+    private void showSearchResults(List<Post> posts) {
+        if (searchResultsAdapter == null) {
+            searchResultsAdapter = new SearchResultsAdapter(this, posts); // Use SearchResultsAdapter
+            rvSearchResults.setAdapter(searchResultsAdapter);
+            rvSearchResults.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            searchResultsAdapter.updatePosts(posts); // If adapter already exists, update posts
+        }
+
+        rvSearchResults.setVisibility(View.VISIBLE);
+    }
+
+    private void hideRecentAndTopicViews() {
+        rvRecentSearch.setVisibility(View.GONE);
+        rvTopics.setVisibility(View.GONE);
+        findViewById(R.id.tv_recent_search_label).setVisibility(View.GONE);
+        findViewById(R.id.tv_topic_label).setVisibility(View.GONE);
+        findViewById(R.id.btn_see_all_topics).setVisibility(View.GONE);
+    }
+
+    private void hideSearchResultsView() {
+        rvSearchResults.setVisibility(View.GONE);
+    }
+
     private void setupTopics() {
         List<String> topics = Arrays.asList("Hama", "Pupuk", "Tanaman", "Hama", "Pupuk", "Tanaman", "Hama", "Pupuk", "Tanaman");
         TopicAdapter adapter = new TopicAdapter(topics);
-        rvTopics.setLayoutManager(new GridLayoutManager(this, 3)); // Grid dengan 3 kolom
+        rvTopics.setLayoutManager(new GridLayoutManager(this, 3));
         rvTopics.setAdapter(adapter);
-
-        Button lessButton = findViewById(R.id.lessButton);
-        Button btnSeeAll = findViewById(R.id.btn_see_all_topics);
-        btnSeeAll.setOnClickListener(v -> {
-            adapter.setShowAll(true); // Tampilkan semua topik
-            btnSeeAll.setVisibility(View.GONE); // Sembunyikan tombol "See All"
-            lessButton.setVisibility(View.VISIBLE);
-        });
-
-        // Kembali ke posisi awal (hanya sebagian topik)
-
-        lessButton.setOnClickListener(v -> {
-            adapter.setShowAll(false); // Tampilkan hanya sebagian data
-            btnSeeAll.setVisibility(View.VISIBLE); // Tampilkan tombol "See All"
-            lessButton.setVisibility(View.GONE); // Sembunyikan tombol "Lebih Sedikit"
-        });
     }
 
-    // Metode untuk mengatur RecyclerView recent search
     private void setupRecentSearches() {
         List<String> recentSearches = getRecentSearches();
-
-        // Debugging
-        System.out.println("Recent Searches for Adapter: " + recentSearches);
-
-        // Menambahkan data ke adapter
         RecentSearchAdapter adapter = new RecentSearchAdapter(recentSearches);
         rvRecentSearch.setAdapter(adapter);
         rvRecentSearch.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    // Metode untuk menyimpan pencarian terbaru
-    private void saveSearch(String newSearchTerm) {
-        List<String> recentSearches = getRecentSearches();
-        if (!recentSearches.contains(newSearchTerm)) {
-            recentSearches.add(newSearchTerm); // Tambahkan pencarian baru
-            if (recentSearches.size() > 10) {
-                recentSearches.remove(0); // Batasi maksimal 10 pencarian
-            }
-            SharedPreferences sharedPreferences = getSharedPreferences("recent_search", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(recentSearches); // Convert ke JSON
-            editor.putString("search_history", json);
-            editor.apply();
-
-            // Refresh RecyclerView dengan data terbaru
-            setupRecentSearches(); // Memanggil metode untuk memperbarui data di RecyclerView
-        }
-    }
-
-
-    // Metode untuk mengambil pencarian terbaru
     private List<String> getRecentSearches() {
         SharedPreferences sharedPreferences = getSharedPreferences("recent_search", MODE_PRIVATE);
         String json = sharedPreferences.getString("search_history", null);
-
-        // Debugging
-        System.out.println("Retrieved JSON: " + json);
-
         if (json != null) {
-            Gson gson = new Gson();
             Type type = new TypeToken<List<String>>() {}.getType();
-            return gson.fromJson(json, type); // Konversi JSON ke List
-        } else {
-            return new ArrayList<>(); // Kembalikan list kosong jika tidak ada data
+            return new Gson().fromJson(json, type);
         }
+        return new ArrayList<>();
     }
 
-    // Menampilkan dialog filter
-    private void showFilterDialog() {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_filter);
-        dialog.setCancelable(true);
+//    private void showFilterDialog() {
+//        Dialog dialog = new Dialog(this);
+//        dialog.setContentView(R.layout.dialog_filter);
+//        dialog.setCancelable(true);
+//
+//        dialog.show();
+//    }
 
-        // Inisialisasi elemen dialog
-        RadioGroup rgPostType = dialog.findViewById(R.id.rg_post_type);
-        EditText etDateFrom = dialog.findViewById(R.id.et_date_from);
-        EditText etDateTo = dialog.findViewById(R.id.et_date_to);
-        Button btnApplyFilter = dialog.findViewById(R.id.btn_apply_filter);
-
-        // Set up DatePicker untuk Tanggal Dari
-        etDateFrom.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    SearchActivity.this,
-                    (view, year, month, dayOfMonth) -> etDateFrom.setText(dayOfMonth + "/" + (month + 1) + "/" + year),
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-            );
-            datePickerDialog.show();
-        });
-
-        // Set up DatePicker untuk Tanggal Hingga
-        etDateTo.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    SearchActivity.this,
-                    (view, year, month, dayOfMonth) -> etDateTo.setText(dayOfMonth + "/" + (month + 1) + "/" + year),
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-            );
-            datePickerDialog.show();
-        });
-
-        // Set up tombol Terapkan
-        btnApplyFilter.setOnClickListener(v -> {
-            int selectedPostTypeId = rgPostType.getCheckedRadioButtonId();
-            RadioButton selectedPostType = dialog.findViewById(selectedPostTypeId);
-            String dateFrom = etDateFrom.getText().toString();
-            String dateTo = etDateTo.getText().toString();
-
-            // Logika filter berdasarkan pilihan
-            Toast.makeText(SearchActivity.this, "Filter diterapkan: " + selectedPostType.getText() + ", Tanggal: " + dateFrom + " sampai " + dateTo, Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
-        });
-
-        dialog.show();
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

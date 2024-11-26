@@ -150,6 +150,13 @@
         <item>Ekonomi</item>
         <item>Kesehatan</item>
     </string-array>
+
+    <string-array name="post_tye">
+        <item>Pilih Tipe</item>
+        <item>Pertanyaan</item>
+        <item>Informasi</item>
+
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

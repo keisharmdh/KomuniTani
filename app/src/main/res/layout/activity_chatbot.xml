@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".chatbotFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/RVChat"
+        android:layout_marginTop="70dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/RLMsg"
+        android:layout_marginBottom="70dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter Message"
+            android:id="@+id/EditMsg"
+            android:singleLine="true"
+            android:layout_margin="5dp"
+            android:imeOptions="actionSend"
+            android:layout_toLeftOf="@id/FABSend"
+            android:layout_centerInParent="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/add"
+            android:contentDescription="Send message"
+            android:id="@+id/FABSend"
+            android:layout_margin="4dp"
+            app:fabCustomSize="45dp"
+            android:backgroundTint="@color/hijau1"
+            android:tint="@color/white"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,80 +1,82 @@
 package com.example.model;
 
 public class RegisterResponse {
-    private int id;
-    private String name;
-    private String email;
-    private String bio;
-    private String profile_picture;
-    private String cover_photo;
-    private String created_at;
-    private String updated_at;
-    private String password;
-    private String remember_token;
-    private String message;
+    private User user;
+    private String token;
+    private String status;
 
-    // Getters and Setters
-    public int getId() {
-        return id;
+    // Getter dan Setter
+    public User getUser() {
+        return user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getName() {
-        return name;
+    public String getToken() {
+        return token;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public String getEmail() {
-        return email;
+    public String getStatus() {
+        return status;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getCreated_at() {
-        return created_at;
-    }
+    // Class untuk objek user
+    public static class User {
+        private String name;
+        private String email;
+        private String created_at;
+        private String updated_at;
+        private int id;
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
-    }
+        // Getter dan Setter
+        public String getName() {
+            return name;
+        }
 
-    public String getUpdated_at() {
-        return updated_at;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public String getPassword() {
-        return password;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public String getCreatedAt() {
+            return created_at;
+        }
 
-    public String getRemember_token() {
-        return remember_token;
-    }
+        public void setCreatedAt(String created_at) {
+            this.created_at = created_at;
+        }
 
-    public void setRemember_token(String remember_token) {
-        this.remember_token = remember_token;
-    }
+        public String getUpdatedAt() {
+            return updated_at;
+        }
 
-    public String getMessage() {
-        return message;
-    }
+        public void setUpdatedAt(String updated_at) {
+            this.updated_at = updated_at;
+        }
 
-    public void setMessage(String message) {
-        this.message = message;
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
     }
 }

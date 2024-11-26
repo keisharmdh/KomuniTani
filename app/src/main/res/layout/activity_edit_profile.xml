@@ -9,6 +9,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Header Image Section -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <!-- Header Image -->
+            <ImageView
+                android:id="@+id/header_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/error_image"
+                android:contentDescription="Header Image" />
+
+            <!-- Change Icon -->
+            <ImageView
+                android:id="@+id/change_header_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/edit_image"
+                android:contentDescription="Change Header Icon"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="8dp" />
+        </FrameLayout>
+
         <!-- Profile Picture -->
         <ImageView
             android:id="@+id/profile_image_view"
@@ -16,7 +41,7 @@
             android:layout_height="100dp"
             android:src="@drawable/icon_profile_hijau"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="profile_picture_description" />
+            android:contentDescription="Profile Picture" />
 
         <!-- Username Edit Text -->
         <EditText
@@ -35,22 +60,12 @@
             android:hint="Bio"
             android:textSize="16sp" />
 
-        <!-- Ubah Email -->
         <EditText
             android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
             android:textSize="16sp" />
-
-        <!-- Ubah Header Account -->
-        <EditText
-            android:id="@+id/header_account_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Header Account"
-            android:textSize="16sp" />
-
         <!-- Save Profile Changes Button -->
         <Button
             android:id="@+id/save_profile_button"
@@ -118,3 +133,7 @@
 
     </LinearLayout>
 </ScrollView>
+
+
+
+

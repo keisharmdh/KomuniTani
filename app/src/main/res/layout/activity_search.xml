@@ -58,6 +58,61 @@
             android:src="@drawable/filter" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/filter_section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="8dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_topic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Pilih Topik"
+            android:spinnerMode="dropdown"
+            android:paddingHorizontal="8dp" />
+
+        <Spinner
+            android:id="@+id/spinner_post_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Jenis Postingan"
+            android:spinnerMode="dropdown"
+            android:paddingHorizontal="8dp" />
+
+        <Spinner
+            android:id="@+id/spinner_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Waktu"
+            android:spinnerMode="dropdown"
+            android:paddingHorizontal="8dp" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_results"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/filter_section"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+
+
     <!-- Recent Search Label -->
     <TextView
         android:id="@+id/tv_recent_search_label"
@@ -69,8 +124,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/search_bar"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/filter_section"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
     <!-- Recent Search RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
@@ -99,7 +155,8 @@
         app:layout_constraintTop_toBottomOf="@id/rv_recent_search"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        android:visibility="visible"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_topics"
@@ -130,7 +187,8 @@
         app:layout_constraintTop_toBottomOf="@id/rv_topics"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/lessButton"

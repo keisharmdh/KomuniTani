@@ -1,3 +1,5 @@
+import java.util.regex.Pattern.compile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -74,6 +76,9 @@ dependencies {
     implementation("com.google.firebase:firebase-bom:33.5.1")
     implementation ("com.google.firebase:firebase-messaging:23.0.0")
     implementation ("com.google.android.libraries.places:places:2.6.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.3.1")
+
 
 
 
@@ -111,4 +116,7 @@ dependencies {
     // Debug dependencies
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+
+
 }

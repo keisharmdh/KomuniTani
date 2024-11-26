@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.api.RetrofitClient;
+
 
 public class login extends AppCompatActivity {
 
@@ -39,48 +40,38 @@ public class login extends AppCompatActivity {
 
         if (isLoggedIn) {
             // Jika sudah login, langsung ke MainActivity
+            Log.d(TAG, "User sudah login, langsung ke MainActivity");
             Intent intent = new Intent(login.this, MainActivity.class);
             startActivity(intent);
-            finish(); // Menutup LoginActivity
+            finish();
         }
 
-        // Inisialisasi tombol login dan listener
-        Button btn_Login = findViewById(R.id.btn_login);
-        btn_Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginUser();
-            }
-        });
+        // Inisialisasi tombol login
+        Button btnLogin = findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(view -> loginUser());
 
         // Menambahkan fungsi untuk lupa password
-        TextView clickableText_lupa_password = findViewById(R.id.lupa_pw);
-        clickableText_lupa_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(login.this, reset_password.class);
-                startActivity(intent);
-            }
+        TextView lupaPassword = findViewById(R.id.lupa_pw);
+        lupaPassword.setOnClickListener(view -> {
+            Intent intent = new Intent(login.this, reset_password.class);
+            startActivity(intent);
         });
 
         // Menambahkan fungsi untuk daftar
-        TextView clickableText_daftar = findViewById(R.id.text_click_daftar);
-        clickableText_daftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(login.this, daftar.class);
-                startActivity(intent);
-            }
+        TextView daftar = findViewById(R.id.text_click_daftar);
+        daftar.setOnClickListener(view -> {
+            Intent intent = new Intent(login.this, daftar.class);
+            startActivity(intent);
         });
     }
 
-    // Fungsi untuk login dan mendapatkan token dari API
+    // Fungsi untuk login
     private void loginUser() {
         EditText etEmail = findViewById(R.id.username);
         EditText etPassword = findViewById(R.id.password);
 
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
         // Validasi input
         if (email.isEmpty() || password.isEmpty()) {
@@ -91,40 +82,57 @@ public class login extends AppCompatActivity {
         // Membuat request login
         LoginRequest loginRequest = new LoginRequest(email, password);
 
-        // Retrofit setup tetap sama
+        // Retrofit setup
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://komunitani-v2.vercel.app/api/api/v/login")
+                .baseUrl("https://komunitani-v2.vercel.app/api/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
         Call<LoginResponse> call = apiService.login(loginRequest);
 
-        // Proses callback tetap sama
+        // Proses callback
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
                     LoginResponse loginResponse = response.body();
-                    if (loginResponse != null) {
-                        String token = loginResponse.getToken();
-                        if (token != null && !token.isEmpty()) {
-                            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("userToken", token);
-                            editor.putBoolean("isLoggedIn", true);
-                            editor.apply();
+                    String status = loginResponse.getStatus();
+                    String token = loginResponse.getToken();
+                    LoginResponse.User user = loginResponse.getUser();
 
-                            Intent intent = new Intent(login.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(login.this, "Token kosong", Toast.LENGTH_SHORT).show();
-                        }
+                    // Menyimpan token jika perlu
+                    RetrofitClient.token = response.body().getToken();
+
+                    Log.d(TAG, "Login Response Status: " + status);
+                    Log.d(TAG, "Token: " + token);
+                    Log.d(TAG, "User Name: " + user.getName());
+
+                    // Mengecek apakah token ada sebagai tanda login berhasil
+                    if (token != null && !token.isEmpty()) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isLoggedIn", true); // Menyimpan status login
+                        editor.putString("token", token); // Menyimpan token
+                        editor.putString("username", user.getName()); // Simpan username
+                        editor.putString("email", user.getEmail()); // Simpan email jika dibutuhkan
+                        editor.apply();
+
+                        String savedUsername = sharedPreferences.getString("username", "Not Saved");
+                        Log.d(TAG, "Username yang disimpan di SharedPreferences: " + savedUsername);
+
+
+
+                        // Beralih ke MainActivity
+                        Intent intent = new Intent(login.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(login.this, "Login gagal: Tidak ada token", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     try {
-                        String errorBody = response.errorBody().string();
+                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "Unknown error";
                         Log.e(TAG, "Error Body: " + errorBody);
                     } catch (IOException e) {
                         Log.e(TAG, "Error reading error body: " + e.getMessage());
@@ -136,9 +144,8 @@ public class login extends AppCompatActivity {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(login.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Failure: " + t.getMessage());
             }
         });
     }
-
-
 }

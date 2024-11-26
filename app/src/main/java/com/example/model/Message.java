@@ -2,18 +2,26 @@ package com.example.model;
 
 
 public class Message {
-    private String contactName;
+    private int id;
+    private String name;
     private String lastMessage;
     private int unreadCount;
 
-    public Message(String contactName, String lastMessage, int unreadCount) {
-        this.contactName = contactName;
+    public Message(int id, String contactName, String lastMessage, int unreadCount) {
+        this.id = id;
+        this.name = contactName;
         this.lastMessage = lastMessage;
         this.unreadCount = unreadCount;
     }
 
-    public String getContactName() {
-        return contactName;
+    public int getId() {
+        return id;
+    }
+
+
+
+    public String getName() {
+        return name;
     }
 
     public String getLastMessage() {
@@ -23,6 +31,7 @@ public class Message {
     public int getUnreadCount() {
         return unreadCount;
     }
+
 
 
 

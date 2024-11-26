@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
@@ -36,90 +36,153 @@
             app:layout_constraintStart_toEndOf="@id/avatar_image"
             app:layout_constraintTop_toTopOf="@id/avatar_image" />
 
-        <!-- User location -->
-        <TextView
-            android:id="@+id/user_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Bogor"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@id/avatar_image"
-            app:layout_constraintTop_toBottomOf="@id/user_name" />
-
         <!-- Timestamp -->
         <TextView
             android:id="@+id/post_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
             android:text="10 Nov 2024, 10:00"
-            android:textSize="12sp"
             android:textColor="@color/abumuda"
-            app:layout_constraintStart_toStartOf="@id/user_location"
-            app:layout_constraintTop_toBottomOf="@id/user_location" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/avatar_image"
+            app:layout_constraintTop_toBottomOf="@id/user_name" />
 
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Menu"
+            android:src="@drawable/titik_tiga"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/avatar_image" />
 
+        <!-- Post title -->
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Judul Postingan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_timestamp" />
 
         <!-- Post content -->
         <TextView
             android:id="@+id/post_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Konten Postingan"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_timestamp"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/judul" />
 
         <!-- Post image -->
-        <ImageView
-            android:id="@+id/post_image"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/header_account"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_content"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Actions (Likes, Comments, Shares) -->
-        <LinearLayout
+        <!-- Actions (Likes, Comments, Shares) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/post_actions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/post_image">
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/post_content">
 
+            <!-- Like -->
+            <ImageView
+                android:id="@+id/like_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/like_icon_selector"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:id="@+id/like_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/thumb"
-                android:drawablePadding="4dp"
-                android:text="25" />
+                android:layout_marginStart="4dp"
+                android:text="25"
+                app:layout_constraintStart_toEndOf="@id/like_icon"
+                app:layout_constraintTop_toTopOf="@id/like_icon" />
 
+            <!-- Comment -->
+            <ImageView
+                android:id="@+id/comment_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/comment"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
             <TextView
                 android:id="@+id/comment_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:drawableLeft="@drawable/comment"
-                android:drawablePadding="4dp"
-                android:text="4" />
+                android:layout_marginStart="4dp"
+                android:text="4"
+                app:layout_constraintStart_toEndOf="@id/comment_icon"
+                app:layout_constraintTop_toTopOf="@id/comment_icon" />
 
-            <TextView
-                android:id="@+id/share_count"
-                android:layout_width="wrap_content"
+            <!-- Share -->
+            <ImageView
+                android:id="@+id/share_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Comment section -->
+        <LinearLayout
+            android:id="@+id/comment_sectio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/post_actions"
+            android:visibility="gone">
+
+            <!-- RecyclerView untuk daftar komentar -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comment_recycler_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:drawableLeft="@drawable/share"
-                android:drawablePadding="4dp"
-                android:text="3" />
+                android:layout_marginBottom="8dp" />
+
+            <!-- Input komentar dan tombol dalam satu baris -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Input komentar -->
+                <EditText
+                    android:id="@+id/comment_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Write a comment"
+                    android:inputType="text" />
+
+                <!-- Tombol kirim -->
+                <Button
+                    android:id="@+id/send_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Send" />
+            </LinearLayout>
         </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

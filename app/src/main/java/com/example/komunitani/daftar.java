@@ -41,7 +41,7 @@ public class daftar extends AppCompatActivity {
         btnDaftar = findViewById(R.id.btn_daftar);
 
         // Inisialisasi Retrofit
-        apiService = RetrofitClient.getClient("https://komunitani-v2.vercel.app/api/").create(ApiService.class);
+        apiService = RetrofitClient.getClient("https://komunitani-v2.vercel.app/api/api/").create(ApiService.class);
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,25 +67,36 @@ public class daftar extends AppCompatActivity {
                     call.enqueue(new Callback<RegisterResponse>() {
                         @Override
                         public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                            if (response.isSuccessful()) {
-                                // Menampilkan pesan sukses jika pendaftaran berhasil
+                            if (response.isSuccessful() && response.body() != null) {
                                 RegisterResponse registerResponse = response.body();
-                                Toast.makeText(daftar.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                // Ambil data dari respons
+                                String name = registerResponse.getUser().getName();
+                                String email = registerResponse.getUser().getEmail();
+                                String token = registerResponse.getToken();
+                                String status = registerResponse.getStatus();
+
+                                Log.d("RegisterSuccess", "Name: " + name + ", Email: " + email + ", Token: " + token + ", Status: " + status);
+
+                                Toast.makeText(daftar.this, status, Toast.LENGTH_SHORT).show();
 
                                 // Pindah ke halaman login setelah berhasil
                                 Intent loginIntent = new Intent(getApplicationContext(), login.class);
                                 startActivity(loginIntent);
-                                finish(); // Menutup activity daftar agar tidak bisa kembali ke halaman pendaftaran
+                                finish();
                             } else {
-                                // Menampilkan pesan gagal jika pendaftaran gagal
-                                Log.e("RegisterError", "Response error: " + response.code() + " - " + response.message());
+                                try {
+                                    Log.e("RegisterError", "Error body: " + response.errorBody().string());
+                                } catch (Exception e) {
+                                    Log.e("RegisterError", "Error parsing error body", e);
+                                }
                                 Toast.makeText(daftar.this, "Pendaftaran gagal", Toast.LENGTH_SHORT).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                            // Menampilkan pesan error jika koneksi gagal
+                            Log.e("RegisterFailure", "Request failed", t);
                             Toast.makeText(daftar.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });

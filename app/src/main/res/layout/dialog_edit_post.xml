@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/rounded_dialog_background"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Postingan"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center"/>
+
+    <!-- Title Label -->
+    <TextView
+        android:id="@+id/label_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter title"
+        android:background="@drawable/search_bar_main"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"/>
+
+    <!-- Content Label -->
+    <TextView
+        android:id="@+id/label_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Content"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter content"
+        android:background="@drawable/search_bar_main"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"/>
+
+    <!-- Topic Label -->
+    <TextView
+        android:id="@+id/label_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Topic"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/edit_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bar_main"/>
+
+    <!-- Post Type Label -->
+    <TextView
+        android:id="@+id/label_post_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Type"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/edit_post_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bar_main"/>
+
+    <!-- Submit Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp">
+
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:textAllCaps="false"
+            android:layout_marginStart="8dp"/> <!-- Optional margin between buttons -->
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update"
+            android:backgroundTint="@color/hijau1"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp"
+            android:padding="12dp"
+            android:textAllCaps="false"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

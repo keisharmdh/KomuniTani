@@ -68,196 +68,75 @@
         app:layout_constraintTop_toBottomOf="@id/post_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.9">
+        app:layout_constraintWidth_percent="0.9"> <!-- Visibility Gone -->
 
-        <!-- Post Type (Pertanyaan/Informasi) -->
-        <!-- Post Type (Pertanyaan/Informasi) -->
-        <LinearLayout
+        <!-- Input Judul -->
+        <EditText
+            android:id="@+id/post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical">
-
-            <!-- Avatar (Diletakkan di pojok kiri) -->
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/foto_profile"
-                android:background="@drawable/circle_background"
-                android:layout_marginStart="8dp" />
-
-            <!-- RadioGroup untuk memilih jenis post -->
-            <RadioGroup
-                android:id="@+id/post_type_group"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <RadioButton
-                    android:id="@+id/rb_question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pertanyaan"
-                    android:textSize="12sp"
-                    android:buttonTint="@color/white"
-                    android:layout_marginEnd="4dp" />
-
-                <RadioButton
-                    android:id="@+id/rb_information"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Informasi"
-                    android:textSize="12sp"
-                    android:buttonTint="@color/white" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <!-- Judul -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
-
-
-            <TextView
-                android:id="@+id/title_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Judul:"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-                android:layout_marginEnd="4dp" />
-
-            <EditText
-                android:id="@+id/post_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Tulis Judul"
-                android:textSize="12sp"
-                android:background="@drawable/insert_background"
-                android:padding="6dp" />
-        </LinearLayout>
-
-        <!-- Deskripsi -->
-        <TextView
-            android:id="@+id/description_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deskripsi:"
-            android:textSize="12sp"
+            android:hint="Judul"
+            android:padding="12dp"
+            android:background="@drawable/insert_background"
+            android:inputType="text"
             android:textColor="@color/black"
-            android:layout_marginBottom="4dp" />
+            android:textColorHint="@color/black" /> <!-- Visibility Gone -->
 
+        <!-- Input Deskripsi -->
         <EditText
             android:id="@+id/post_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tulis pertanyaan atau informasi di sini"
-            android:textSize="12sp"
+            android:hint="Deskripsi"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/insert_background"
-            android:padding="8dp"
-            android:minHeight="80dp"
+            android:inputType="textMultiLine"
             android:gravity="top"
-            android:layout_marginBottom="8dp" />
+            android:minHeight="100dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" /> <!-- Visibility Gone -->
 
-        <!-- Aksi: Topik, Tag, Lokasi, Media, Format Text, Tombol Post -->
-        <LinearLayout
+        <!-- Spinner Topik -->
+        <Spinner
+            android:id="@+id/spinner_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:weightSum="10"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="16dp"
+            android:background="@drawable/insert_background"
+            android:padding="12dp"/> <!-- Visibility Gone -->
 
+        <!-- Spinner untuk Post Type -->
+        <Spinner
+            android:id="@+id/post_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/insert_background"
+            android:padding="12dp"
+            android:layout_marginTop="10dp" /> <!-- Visibility Gone -->
 
-            <!-- Pilih Topik -->
-            <Spinner
-                android:id="@+id/spinner_topic"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:background="@drawable/spinner_with_icon"
-                android:padding="6dp"
-                android:entries="@array/topics"
-                android:spinnerMode="dropdown"
-                android:layout_marginEnd="4dp"
-                android:prompt="@string/spinner_prompt"/>
+        <ImageButton
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="upload_image_button"
+            android:src="@drawable/insert_photo" /> <!-- Visibility Gone -->
 
+        <!-- Tombol Post -->
+        <Button
+            android:id="@+id/btn_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/hijau1"
+            android:padding="8dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="center" />
 
-            <!-- Icon Lokasi -->
-            <ImageButton
-                android:id="@+id/icon_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:src="@drawable/location"
-                android:contentDescription="Add Location"
-                android:padding="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- Icon Media -->
-            <ImageButton
-                android:id="@+id/icon_media"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:src="@drawable/insert_photo"
-                android:contentDescription="Upload Media"
-                android:padding="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- Underline -->
-            <ImageButton
-                android:id="@+id/icon_underline"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:src="@drawable/format_underlined"
-                android:contentDescription="Underline Text"
-                android:padding="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- Italic -->
-            <ImageButton
-                android:id="@+id/icon_italic"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:src="@drawable/format_italic"
-                android:contentDescription="Italic Text"
-                android:padding="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- Bold -->
-            <ImageButton
-                android:id="@+id/icon_bold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:src="@drawable/format_bold"
-                android:contentDescription="Bold Text"
-                android:padding="4dp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- Tombol Post -->
-            <Button
-                android:id="@+id/btn_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Post"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/hijau1"
-                android:padding="8dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginEnd="4dp"
-                android:layout_gravity="center" />
-        </LinearLayout>
     </LinearLayout>
 
 

@@ -1,56 +1,49 @@
 package com.example.model;
 
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
+
 
 public class Post {
     @SerializedName("id")
     private int id;
 
-    @SerializedName("user_id") // user_id yang akan digunakan untuk mengambil username
+    @SerializedName("user_id")
     private int userId;
 
-    @SerializedName("user_location")
-    private String userLocation;
+    @SerializedName("title")
+    private String title;
 
     @SerializedName("content")
     private String content;
 
-    @SerializedName("like_count")
-    private int likeCount;
+    @SerializedName("image_path")
+    private String imagePath;
 
-    @SerializedName("comment_count")
-    private int commentCount;
-
-    @SerializedName("share_count")
-    private int shareCount;
-
-    @SerializedName("image_url") // Gambar postingan
-    private String imageUrl;
+    @SerializedName("topic")
+    private String topic;
 
     @SerializedName("post_type")
     private String postType;
 
-    @SerializedName("timestamp") // Tanggal pembuatan postingan
-    private String timestamp;
+    @SerializedName("created_at")
+    private String createdAt;
 
-    @SerializedName("avatar_url") // URL avatar pengguna
-    private String avatarUrl;
+    @SerializedName("updated_at")
+    private String updatedAt;
 
-    // Constructor
-    public Post(int id, int userId, String userLocation, String content, int likeCount, int commentCount, int shareCount, String imageUrl, String timestamp, String avatarUrl) {
-        this.id = id;
-        this.userId = userId;
-        this.userLocation = userLocation;
-        this.content = content;
-        this.likeCount = likeCount;
-        this.commentCount = commentCount;
-        this.shareCount = shareCount;
-        this.imageUrl = imageUrl;
-        this.timestamp = timestamp;
-        this.avatarUrl = avatarUrl;
-    }
+    @SerializedName("user")
+    private User user;
 
-    // Getters
+    @SerializedName("likes")
+    private List<Like> likes;
+
+    private boolean isLiked;
+
+    @SerializedName("comments")
+    private List<Comment> comments;
+
+    // Getter methods
     public int getId() {
         return id;
     }
@@ -59,93 +52,51 @@ public class Post {
         return userId;
     }
 
-    public String getUserLocation() {
-        return userLocation;
+    public String getTitle() {
+        return title;
     }
 
     public String getContent() {
         return content;
     }
 
-    public int getLikeCount() {
-        return likeCount;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public String getTopic() {
+        return topic;
     }
 
-    public int getShareCount() {
-        return shareCount;
+    public String getPostType() {
+        return postType;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+    public User getUser() {
+        return user;
     }
 
-    // Setters
-    public void setId(int id) {
-        this.id = id;
+    public List<Like> getLikes() {
+        return likes;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public boolean isLiked() {
+        return isLiked;
     }
 
-    public void setUserLocation(String userLocation) {
-        this.userLocation = userLocation;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
-    }
-
-    public void setShareCount(int shareCount) {
-        this.shareCount = shareCount;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", userLocation='" + userLocation + '\'' +
-                ", content='" + content + '\'' +
-                ", likeCount=" + likeCount +
-                ", commentCount=" + commentCount +
-                ", shareCount=" + shareCount +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", postType='" + postType + '\'' +
-                ", timestamp='" + timestamp + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                '}';
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }
